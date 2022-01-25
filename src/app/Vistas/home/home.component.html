@@ -1,1 +1,35 @@
-<p>home works!</p>
+<app-header></app-header>
+<div class="container">
+
+    <h3>Lista de clientes</h3><br>
+
+    <button type="button" class="btn btn-primary" (click)="nuevoCliente()">Crear Cliente</button>
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Documento</th>
+            <th scope="col">Tipo Documento</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Fecha Nacimiento</th>
+            <th scope="col">Fecha Creacion</th>
+            <th scope="col">Estado</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let cliente of clientes" (click)="editarCliente(cliente.id)">
+            <th scope="row">{{cliente.id}}</th>
+            <td>{{cliente.tipoId}}</td>
+            <td>{{cliente.nombre}}</td>
+            <td>{{cliente.apellido}}</td>
+            <td>{{cliente.correo}}</td>
+            <td>{{cliente.fechaNac}}</td>
+            <td>{{cliente.fechaCre}}</td>
+            <td>{{cliente.estado}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<app-footer></app-footer>

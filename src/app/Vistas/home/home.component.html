@@ -19,7 +19,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let cliente of clientes" (click)="editarCliente(cliente.id)">
+        <tr *ngFor="let cliente of response?.data" (click)="listaCuentas(cliente.id)">
             <th scope="row">{{cliente.id}}</th>
             <td>{{cliente.tipoId}}</td>
             <td>{{cliente.nombre}}</td>

@@ -3,6 +3,7 @@ import {ApiService} from '../../Services/api/api.service';
 import {Router} from '@angular/router';
 
 import {ListaClientesI } from '../../Models/listaclientes.interface';
+import {ResponseI} from '../../Models/response.interface';
 
 @Component({
   selector: 'app-home',
@@ -11,18 +12,19 @@ import {ListaClientesI } from '../../Models/listaclientes.interface';
 })
 export class HomeComponent implements OnInit {
 
-  clientes:ListaClientesI[] | undefined;
+  //clientes:ListaClientesI[] | undefined;
+  response:ResponseI | undefined;
 
   constructor(private api:ApiService, private router:Router) { }
 
   ngOnInit(): void {
     this.api.getAllCustomers().subscribe(data =>{
-      this.clientes= data;
+      this.response= data;
     })
   }
 
-  editarCliente(id: any){
-    console.log(id);
+  listaCuentas(id: any){
+    this.router.navigate(['ListaCuentas',id]);
   }
 
   nuevoCliente(){

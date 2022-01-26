@@ -1,0 +1,35 @@
+<app-header></app-header>
+<div class="container">
+
+    <h3>Productos de {{responsecliente?.data.nombre}} {{responsecliente?.data.apellido}}</h3>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Numero</th>
+            <th scope="col">Tipo Cuenta</th>
+            <th scope="col">Saldo</th>
+            <th scope="col">Cedula titular</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Fecha Apertura</th>
+            <th scope="col">Accion</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let cuenta of response?.data" (click)="listaMovimientos(cuenta.numero)">
+            <th scope="row">{{cuenta.numero}}</th>
+            <td>{{cuenta.tipo}}</td>
+            <td>${{cuenta.saldo}}</td>
+            <td>{{cuenta.idCliente}}</td>
+            <td>{{cuenta.estado}}</td>
+            <td>{{cuenta.fechaApertura}}</td>
+            <td > 
+                <div *ngIf="cuenta.estado == 'Activa'"> <button type="button" class="btn btn-primary" (click)="inactivarCuenta(cuenta.numero)">Inactivar Cuenta</button></div>
+                <div *ngIf="cuenta.estado == 'Inactiva'"> <button type="button" class="btn btn-primary" (click)="activarCuenta(cuenta.numero)">Activar Cuenta</button></div>
+                <div *ngIf="cuenta.saldo == 0 && cuenta.estado != 'Cancelada'"> <button type="button" class="btn btn-primary" (click)="cancelarCuenta(cuenta.numero)">Cacelar Cuenta</button></div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+<app-footer></app-footer>

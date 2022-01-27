@@ -3,23 +3,22 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FooterComponent } from './Plantillas/footer/footer.component';
-import { HeaderComponent } from './Plantillas/header/header.component';
+import { FooterComponent } from './Core/footer/footer.component';
+import { HeaderComponent } from './Core/header/header.component';
 import { HttpClientModule} from '@angular/common/http';
-import { ListaComponent } from './Vistas/Cuentas/lista/lista.component';
-import { MovimientosComponent } from './Vistas/Cuentas/movimientos/movimientos.component';
-import { InactivarComponent } from './Vistas/Cuentas/inactivar/inactivar.component';
-import { ActivarCuentaComponent } from './Vistas/Cuentas/activar-cuenta/activar-cuenta.component';
-import { CancelarCuentaComponent } from './Vistas/Cuentas/cancelar-cuenta/cancelar-cuenta.component';
-import { EditarComponent } from './Vistas/Clientes/editar/editar.component';
+import { ListaComponent } from './Customers/Pages/Cuentas/lista/lista.component';
+import { MovimientosComponent } from './Customers/Pages/Cuentas/movimientos/movimientos.component';
+import { InactivarComponent } from './Customers/Pages/Cuentas/inactivar/inactivar.component';
+import { ActivarCuentaComponent } from './Customers/Pages/Cuentas/activar-cuenta/activar-cuenta.component';
+import { CancelarCuentaComponent } from './Customers/Pages/Cuentas/cancelar-cuenta/cancelar-cuenta.component';
+import { EditarComponent } from './Customers/Pages/Clientes/editar/editar.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import { EditarClienteComponent } from './Vistas/Clientes/editar-cliente/editar-cliente.component';
-import { InactivarClienteComponent } from './Vistas/Clientes/inactivar-cliente/inactivar-cliente.component';
-import { ActivarClienteComponent } from './Vistas/Clientes/activar-cliente/activar-cliente.component';
-import { NuevaCuentaComponent } from './Vistas/Cuentas/nueva-cuenta/nueva-cuenta.component';
-import { NuevoRetiroComponent } from './Vistas/Transacciones/nuevo-retiro/nuevo-retiro.component';
-import { NuevaConsignacionComponent } from './Vistas/Transacciones/nueva-consignacion/nueva-consignacion.component';
-import { NuevaTransferenciaComponent } from './Vistas/Transacciones/nueva-transferencia/nueva-transferencia.component';
+import { InactivarClienteComponent } from './Customers/Pages/Clientes/inactivar-cliente/inactivar-cliente.component';
+import { ActivarClienteComponent } from './Customers/Pages/Clientes/activar-cliente/activar-cliente.component';
+import { NuevaCuentaComponent } from './Customers/Pages/Cuentas/nueva-cuenta/nueva-cuenta.component';
+import { NuevoRetiroComponent } from './Customers/Pages/Transacciones/nuevo-retiro/nuevo-retiro.component';
+import { NuevaConsignacionComponent } from './Customers/Pages/Transacciones/nueva-consignacion/nueva-consignacion.component';
+import { NuevaTransferenciaComponent } from './Customers/Pages/Transacciones/nueva-transferencia/nueva-transferencia.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
@@ -35,7 +34,6 @@ import { ToastrModule } from 'ngx-toastr';
     ActivarCuentaComponent,
     CancelarCuentaComponent,
     EditarComponent,
-    EditarClienteComponent,
     InactivarClienteComponent,
     ActivarClienteComponent,
     NuevaCuentaComponent,

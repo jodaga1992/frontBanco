@@ -17,7 +17,6 @@ import { EditarClienteComponent } from './Vistas/Clientes/editar-cliente/editar-
 import { InactivarClienteComponent } from './Vistas/Clientes/inactivar-cliente/inactivar-cliente.component';
 import { ActivarClienteComponent } from './Vistas/Clientes/activar-cliente/activar-cliente.component';
 import { NuevaCuentaComponent } from './Vistas/Cuentas/nueva-cuenta/nueva-cuenta.component';
-import { NuevaTransaccionComponent } from './Vistas/Transacciones/nueva-transaccion/nueva-transaccion.component'
 //import { HeaderComponent } from './Plantillas/header/header.component';
 //import { NuevoComponent } from './Vistas/Clientes/nuevo/nuevo.component';
 
@@ -37,7 +36,6 @@ import { NuevaTransaccionComponent } from './Vistas/Transacciones/nueva-transacc
     InactivarClienteComponent,
     ActivarClienteComponent,
     NuevaCuentaComponent,
-    NuevaTransaccionComponent,
     //HeaderComponent,
     //NuevoComponent
   ],

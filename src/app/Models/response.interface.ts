@@ -1,7 +1,7 @@
-export interface ResponseI
+export interface ResponseI<T>
 {
     success:boolean;
     message:string;
     codigo:string;
-    data:any;
+    data:T;
 }

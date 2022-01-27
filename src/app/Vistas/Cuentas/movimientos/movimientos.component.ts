@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {ApiService} from '../../../Services/api/api.service';
 import {ResponseI} from '../../../Models/response.interface';
+import { listaMovimientosI } from 'src/app/Models/listamovimientos.interface';
 
 @Component({
   selector: 'app-movimientos',
@@ -10,7 +11,8 @@ import {ResponseI} from '../../../Models/response.interface';
 })
 export class MovimientosComponent implements OnInit {
 
-  response:ResponseI | undefined;
+  response:ResponseI<listaMovimientosI[]> | undefined;
+  numeroc: any
   constructor(private activerouter:ActivatedRoute, private router:Router, private api:ApiService) { }
 
   ngOnInit(): void {
@@ -18,6 +20,10 @@ export class MovimientosComponent implements OnInit {
     this.api.getMovimientos(numero).subscribe(data =>{
       this.response = data;
     });
+    this.activerouter.params.subscribe(numcuenta =>{
+      this.numeroc = numcuenta;
+    });
+    
   }
 
 }

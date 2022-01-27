@@ -16,6 +16,7 @@
             <th scope="col">Fecha Nacimiento</th>
             <th scope="col">Fecha Creacion</th>
             <th scope="col">Estado</th>
+            <th scope="col">Accion</th>
         </tr>
         </thead>
         <tbody>
@@ -28,6 +29,10 @@
             <td>{{cliente.fechaNac}}</td>
             <td>{{cliente.fechaCre}}</td>
             <td>{{cliente.estado}}</td>
+            <td>
+                <div *ngIf="cliente.estado == 'Activo'"> <button type="button" class="btn btn-primary" (click)="inactivarCliente(cliente.id)">Inactivar Cliente</button></div>
+                <div *ngIf="cliente.estado == 'Inactivo'"> <button type="button" class="btn btn-primary" (click)="activarCliente(cliente.id)">Activar Cliente</button></div>
+            </td>
         </tr>
         </tbody>
     </table>

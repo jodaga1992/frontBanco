@@ -13,7 +13,7 @@ import {ResponseI} from '../../Models/response.interface';
 export class HomeComponent implements OnInit {
 
   //clientes:ListaClientesI[] | undefined;
-  response:ResponseI | undefined;
+  response:ResponseI<ListaClientesI[]> | undefined;
 
   constructor(private api:ApiService, private router:Router) { }
 
@@ -29,5 +29,13 @@ export class HomeComponent implements OnInit {
 
   nuevoCliente(){
     this.router.navigate(['NuevoCliente']);
+  }
+
+  inactivarCliente(id: any){
+    this.router.navigate(['InactivarCliente',id]);
+  }
+
+  activarCliente(id: any){
+    this.router.navigate(['ActivarCliente',id]);
   }
 }

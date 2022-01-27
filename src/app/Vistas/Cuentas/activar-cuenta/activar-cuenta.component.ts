@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
+import { listaCuentasI } from 'src/app/Models/listacuentas.interface';
 import {ResponseI} from '../../../Models/response.interface';
 import {ApiService} from '../../../Services/api/api.service';
 
@@ -10,13 +11,12 @@ import {ApiService} from '../../../Services/api/api.service';
 })
 export class ActivarCuentaComponent implements OnInit {
 
-  response:ResponseI | undefined;
+  response:ResponseI<listaCuentasI> | undefined;
   constructor(private activerouter:ActivatedRoute, private router:Router, private api:ApiService) { }
 
   ngOnInit(): void {
     let numeroCuenta = this.activerouter.snapshot.paramMap.get('numeroCuenta');
     this.api.putActivarCuenta(numeroCuenta).subscribe(data => {
-      console.log(data);
       this.router.navigate(['home']);
     });
   }

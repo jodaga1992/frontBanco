@@ -1,6 +1,6 @@
 <app-header></app-header>
 <div class="container">
-    <form [formGroup]="editorform" (ngSubmit)="postForm(editorform.value)">
+    <form [formGroup]="editorform" (ngSubmit)="putForm(editorform.value)">
         <div class="form-group row">
             <div class="col">
                 <label for="exampleFormControlInput1">Tipo de documento</label>
@@ -32,6 +32,10 @@
                 <div class="col">
                     <label for="exampleFormControlInput1">Fecha de nacimiento</label>
                     <input type="text" class="form-control" placeholder="Fecha de nacimiento" formControlName="fechaNac">
+                </div>
+                <div class="col">
+                    <label for="exampleFormControlInput1">Estado</label>
+                    <input type="text" class="form-control" placeholder="Estado" formControlName="estado">
                 </div>
             </div>
         </div>

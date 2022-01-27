@@ -7,6 +7,12 @@ import {MovimientosComponent} from './Vistas/Cuentas/movimientos/movimientos.com
 import {InactivarComponent} from './Vistas/Cuentas/inactivar/inactivar.component';
 import {ActivarCuentaComponent} from './Vistas/Cuentas/activar-cuenta/activar-cuenta.component';
 import {CancelarCuentaComponent} from './Vistas/Cuentas/cancelar-cuenta/cancelar-cuenta.component';
+import {EditarComponent} from './Vistas/Clientes/editar/editar.component';
+import { EditarClienteComponent } from './Vistas/Clientes/editar-cliente/editar-cliente.component';
+import { InactivarClienteComponent } from './Vistas/Clientes/inactivar-cliente/inactivar-cliente.component';
+import { ActivarClienteComponent } from './Vistas/Clientes/activar-cliente/activar-cliente.component';
+import { NuevaCuentaComponent } from './Vistas/Cuentas/nueva-cuenta/nueva-cuenta.component';
+import { NuevaTransaccionComponent } from './Vistas/Transacciones/nueva-transaccion/nueva-transaccion.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'home', pathMatch:'full'},
@@ -16,7 +22,13 @@ const routes: Routes = [
   {path:'MovimientosCuenta/:numero',component:MovimientosComponent},
   {path: 'InactivarCuenta/:numeroCuenta', component:InactivarComponent},
   {path: 'ActivarCuenta/:numeroCuenta', component:ActivarCuentaComponent},
-  {path: 'CancelarCuenta/:numeroCuenta', component:CancelarCuentaComponent}
+  {path: 'CancelarCuenta/:numeroCuenta', component:CancelarCuentaComponent},
+  {path: 'EditarCliente/:id',component:EditarComponent},
+  {path: 'EditandoCliente/:ListaClientesI', component:EditarClienteComponent},
+  {path: 'InactivarCliente/:id', component:InactivarClienteComponent},
+  {path: 'ActivarCliente/:id', component:ActivarClienteComponent},
+  {path: 'NuevaCuenta/:id', component:NuevaCuentaComponent},
+  {path: 'NuevaTransaccion', component:NuevaTransaccionComponent}
 ];
 
 @NgModule({
@@ -25,4 +37,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 export const routingComponents = [HomeComponent,NuevoComponent,ListaComponent,MovimientosComponent,
-  InactivarComponent, ActivarCuentaComponent, CancelarCuentaComponent]
+  InactivarComponent, ActivarCuentaComponent, CancelarCuentaComponent,EditarClienteComponent,EditarComponent]

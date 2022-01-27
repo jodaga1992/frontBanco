@@ -3,13 +3,13 @@
     <h3>Movimientos de la cuenta #{{numeroc?.numero}} </h3>
     <div class="form-group row">
         <div class="col">
-            <button type="button" class="btn btn-primary">Realizar Retiro</button>
+            <button type="button" class="btn btn-primary" (click)="nuevoRetiro()">Realizar Retiro</button>
         </div>
         <div class="col">
-            <button type="button" class="btn btn-primary">Realizar Consignacion</button>
+            <button type="button" class="btn btn-primary" (click)="nuevaConsignacion()">Realizar Consignacion</button>
         </div>
         <div class="col">
-            <button type="button" class="btn btn-primary">Realizar Transferencia</button>
+            <button type="button" class="btn btn-primary" (click)="nuevaTransferencia()">Realizar Transferencia</button>
         </div>
         <div class="col"></div>
         <div class="col"></div>
@@ -37,6 +37,8 @@
         </tr>
         </tbody>
     </table>
-
+    
 </div>
-<app-footer></app-footer>
+
+
+

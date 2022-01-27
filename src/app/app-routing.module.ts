@@ -12,6 +12,9 @@ import { EditarClienteComponent } from './Vistas/Clientes/editar-cliente/editar-
 import { InactivarClienteComponent } from './Vistas/Clientes/inactivar-cliente/inactivar-cliente.component';
 import { ActivarClienteComponent } from './Vistas/Clientes/activar-cliente/activar-cliente.component';
 import { NuevaCuentaComponent } from './Vistas/Cuentas/nueva-cuenta/nueva-cuenta.component';
+import { NuevoRetiroComponent } from './Vistas/Transacciones/nuevo-retiro/nuevo-retiro.component';
+import { NuevaConsignacionComponent } from './Vistas/Transacciones/nueva-consignacion/nueva-consignacion.component';
+import { NuevaTransferenciaComponent } from './Vistas/Transacciones/nueva-transferencia/nueva-transferencia.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'home', pathMatch:'full'},
@@ -26,7 +29,10 @@ const routes: Routes = [
   {path: 'EditandoCliente/:ListaClientesI', component:EditarClienteComponent},
   {path: 'InactivarCliente/:id', component:InactivarClienteComponent},
   {path: 'ActivarCliente/:id', component:ActivarClienteComponent},
-  {path: 'NuevaCuenta/:id', component:NuevaCuentaComponent}
+  {path: 'NuevaCuenta/:id', component:NuevaCuentaComponent},
+  {path: 'NuevoRetiro/:numeroCuenta', component:NuevoRetiroComponent},
+  {path: 'NuevaConsignacion/:numeroCuenta', component:NuevaConsignacionComponent},
+  {path: 'NuevaTransferencia/:numeroCuenta', component:NuevaTransferenciaComponent}
 ];
 
 @NgModule({

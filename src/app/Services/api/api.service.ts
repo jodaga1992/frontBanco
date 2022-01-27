@@ -5,6 +5,7 @@ import {ResponseI} from '../../Models/response.interface'
 import { Observable } from 'rxjs';
 import { listaCuentasI } from 'src/app/Models/listacuentas.interface';
 import { listaMovimientosI } from 'src/app/Models/listamovimientos.interface';
+import { TransaccionI } from 'src/app/Models/transaccion.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -86,10 +87,10 @@ export class ApiService {
     return response;
   }
 
-  putCancelarCuenta(numeroCuenta:any):Observable<ResponseI<ListaClientesI>>
+  putCancelarCuenta(numeroCuenta:any):Observable<ResponseI<listaCuentasI>>
   {
     let direccion = this.url + "productos/" + numeroCuenta + "/cancelar";
-    let response = this.http.put<ResponseI<ListaClientesI>>(direccion,this.httpOptions);
+    let response = this.http.put<ResponseI<listaCuentasI>>(direccion,this.httpOptions);
     return response;
   }
 
@@ -109,7 +110,16 @@ export class ApiService {
     let id: number = +form.idCliente;
     form.idCliente = id;
     let response = this.http.post<ResponseI<listaCuentasI>>(direccion,form);
-    console.log(form);
     return response;
   }
+
+  postTransaccion(form:TransaccionI):Observable<ResponseI<TransaccionI>>
+  {
+    let direccion = this.url + "transacciones";
+    let monto: number = +form.monto;
+    form.monto = monto;
+    let response = this.http.post<ResponseI<TransaccionI>>(direccion,form)
+    return response
+  }
+
 }

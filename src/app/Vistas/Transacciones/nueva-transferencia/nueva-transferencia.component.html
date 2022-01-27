@@ -1,0 +1,18 @@
+<app-header></app-header>
+<div class="container">
+    <form [formGroup]="editorform" (ngSubmit)="postForm(editorform.value)">
+        <div class="form-group row">
+            <div class="col">
+                <label for="exampleFormControlInput1">Monto de la consignacion</label>
+                <input type="text" class="form-control" placeholder="Monto de la consignacion" formControlName="monto">
+            </div>
+            <div class="col">
+                <label for="exampleFormControlInput1">Cuenta Destino</label>
+                <input type="text" class="form-control" placeholder="Cuenta Destino" formControlName="cuentaDestino">
+            </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-secondary btn-sm">Guardar</button>
+    </form>
+</div>
+<app-footer></app-footer> 

@@ -3,6 +3,8 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {ApiService} from '../../../Services/api/api.service'
 import {ListaClientesI} from '../../../Models/listaclientes.interface';
 import {FormGroup, FormControl, Validator, ReactiveFormsModule} from '@angular/forms';
+import {AlertasService} from '../../../Services/alertas/alertas.service';
+import { ResponseI } from 'src/app/Models/response.interface';
 
 @Component({
   selector: 'app-nuevo',
@@ -11,7 +13,7 @@ import {FormGroup, FormControl, Validator, ReactiveFormsModule} from '@angular/f
 })
 export class NuevoComponent implements OnInit {
 
-  response:ListaClientesI | undefined;
+  response:ResponseI<ListaClientesI> | undefined;
   editorform = new FormGroup({
     id: new FormControl(''),
     tipoId: new FormControl(''),
@@ -23,7 +25,7 @@ export class NuevoComponent implements OnInit {
     estado: new FormControl('')
   });
 
-  constructor(private activeroute: ActivatedRoute, private router:Router, private api:ApiService) { }
+  constructor(private activeroute: ActivatedRoute, private router:Router, private api:ApiService, private alertas:AlertasService) { }
 
   ngOnInit(): void {
   }
@@ -32,7 +34,23 @@ export class NuevoComponent implements OnInit {
   {
     this.api.guardarCliente(form).subscribe(data =>
       {
-        console.log(data)
+        this.response = data
+      if(this.response.success=true)
+      {
+        if(this.response.codigo==0)
+        {
+          this.alertas.showSucces(this.response.message,'Hecho')
+        }
+        else
+        {
+          this.alertas.shiwWarning(this.response.message,'Transaccion no ejecutada')
+        }
+      }
+      else
+      {
+        this.alertas.showError(this.response.message,'Error')
+      }
+      this.router.navigate(['home']);
       })
   }
 

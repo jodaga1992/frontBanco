@@ -1,0 +1,14 @@
+<app-header></app-header>
+<div class="container">
+    <form [formGroup]="editorform" (ngSubmit)="postForm(editorform.value)">
+        <div class="form-group row">
+            <div class="col">
+                <label for="exampleFormControlInput1">Monto del retiro</label>
+                <input type="text" class="form-control" placeholder="Monto del retiro" formControlName="monto">
+            </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-secondary btn-sm">Guardar</button>
+    </form>
+</div>
+<app-footer></app-footer>

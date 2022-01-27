@@ -2,6 +2,6 @@ export interface ResponseI<T>
 {
     success:boolean;
     message:string;
-    codigo:string;
+    codigo:number;
     data:T;
 }

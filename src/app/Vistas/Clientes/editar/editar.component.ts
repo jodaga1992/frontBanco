@@ -4,6 +4,7 @@ import {ApiService} from '../../../Services/api/api.service'
 import {ResponseI} from '../../../Models/response.interface';
 import {ListaClientesI} from '../../../Models/listaclientes.interface';
 import {FormGroup, FormControl, Validator, ReactiveFormsModule} from '@angular/forms';
+import {AlertasService} from '../../../Services/alertas/alertas.service';
 
 @Component({
   selector: 'app-editar',
@@ -12,7 +13,8 @@ import {FormGroup, FormControl, Validator, ReactiveFormsModule} from '@angular/f
 })
 export class EditarComponent implements OnInit {
 
-  response:ListaClientesI | undefined;
+  response:ResponseI<ListaClientesI> | undefined;
+  responsePut:ResponseI<ListaClientesI> | undefined;
   editorform = new FormGroup({
     id: new FormControl(''),
     tipoId: new FormControl(''),
@@ -25,21 +27,21 @@ export class EditarComponent implements OnInit {
   });
 
 
-  constructor(private activeroute: ActivatedRoute, private router:Router, private api:ApiService) { }
+  constructor(private activeroute: ActivatedRoute, private router:Router, private api:ApiService,private alertas:AlertasService) { }
 
   ngOnInit(): void {
     let clienteId = this.activeroute.snapshot.paramMap.get('id');
     this.api.getClienteId(clienteId).subscribe(data =>{
-      this.response = data.data;
+      this.response = data;
       this.editorform.setValue({
-        'id':this.response?.id,
-        'tipoId':this.response?.tipoId,
-        'nombre':this.response?.nombre,
-        'apellido':this.response?.apellido,
-        'correo':this.response?.correo,
-        'fechaNac':this.response?.fechaNac,
-        'fechaCre':this.response?.fechaCre,
-        'estado':this.response?.estado
+        'id':this.response?.data.id,
+        'tipoId':this.response?.data.tipoId,
+        'nombre':this.response?.data.nombre,
+        'apellido':this.response?.data.apellido,
+        'correo':this.response?.data.correo,
+        'fechaNac':this.response?.data.fechaNac,
+        'fechaCre':this.response?.data.fechaCre,
+        'estado':this.response?.data.estado
       });
     })
   }
@@ -47,7 +49,23 @@ export class EditarComponent implements OnInit {
   putForm(form:ListaClientesI)
   {
     this.api.actualizarCliente(form).subscribe(data =>{
-      console.log(data)
+      this.responsePut = data
+      if(this.responsePut.success=true)
+      {
+        if(this.responsePut.codigo==0)
+        {
+          this.alertas.showSucces(this.responsePut.message,'Hecho')
+        }
+        else
+        {
+          this.alertas.shiwWarning(this.responsePut.message,'Transaccion no ejecutada')
+        }
+      }
+      else
+      {
+        this.alertas.showError(this.responsePut.message,'Error')
+      }
+      this.router.navigate(['ListaCuentas',this.responsePut.data.id]);
     })
   }
 

@@ -17,8 +17,11 @@ import { EditarClienteComponent } from './Vistas/Clientes/editar-cliente/editar-
 import { InactivarClienteComponent } from './Vistas/Clientes/inactivar-cliente/inactivar-cliente.component';
 import { ActivarClienteComponent } from './Vistas/Clientes/activar-cliente/activar-cliente.component';
 import { NuevaCuentaComponent } from './Vistas/Cuentas/nueva-cuenta/nueva-cuenta.component';
-//import { HeaderComponent } from './Plantillas/header/header.component';
-//import { NuevoComponent } from './Vistas/Clientes/nuevo/nuevo.component';
+import { NuevoRetiroComponent } from './Vistas/Transacciones/nuevo-retiro/nuevo-retiro.component';
+import { NuevaConsignacionComponent } from './Vistas/Transacciones/nueva-consignacion/nueva-consignacion.component';
+import { NuevaTransferenciaComponent } from './Vistas/Transacciones/nueva-transferencia/nueva-transferencia.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,9 @@ import { NuevaCuentaComponent } from './Vistas/Cuentas/nueva-cuenta/nueva-cuenta
     InactivarClienteComponent,
     ActivarClienteComponent,
     NuevaCuentaComponent,
+    NuevoRetiroComponent,
+    NuevaConsignacionComponent,
+    NuevaTransferenciaComponent,
     //HeaderComponent,
     //NuevoComponent
   ],
@@ -43,7 +49,9 @@ import { NuevaCuentaComponent } from './Vistas/Cuentas/nueva-cuenta/nueva-cuenta
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
   ],
   providers: [],
   bootstrap: [AppComponent]

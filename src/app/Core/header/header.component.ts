@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
 
 realizarTransaccion()
 {
-  this.router.navigate(['NuevaTransaccion']);
+  this.router.navigate(['home']);
 }
 
 }

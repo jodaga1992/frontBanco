@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 
 import {ListaClientesI } from '../../Shared/Models/listaclientes.interface';
 import {ResponseI} from '../../Shared/Models/response.interface';
+import { GlobalService } from 'src/app/Shared/Services/global.service';
 
 @Component({
   selector: 'app-home',
@@ -15,12 +16,19 @@ export class HomeComponent implements OnInit {
   //clientes:ListaClientesI[] | undefined;
   response:ResponseI<ListaClientesI[]> | undefined;
 
-  constructor(private api:ApiService, private router:Router) { }
+  constructor(private api:ApiService, private router:Router, private globalService: GlobalService ) { }
 
   ngOnInit(): void {
-    this.api.getAllCustomers().subscribe(data =>{
-      this.response= data;
-    })
+    if(this.globalService.user.jwt==null)
+    {
+      this.router.navigate(['login'])
+    }
+    else
+    {
+      this.api.getAllCustomers().subscribe(data =>{
+        this.response= data;
+      })
+    }
   }
 
   listaCuentas(id: any){

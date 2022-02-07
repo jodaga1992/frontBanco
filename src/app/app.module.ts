@@ -5,7 +5,7 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './Core/footer/footer.component';
 import { HeaderComponent } from './Core/header/header.component';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { ListaComponent } from './Customers/Pages/Cuentas/lista/lista.component';
 import { MovimientosComponent } from './Customers/Pages/Cuentas/movimientos/movimientos.component';
 import { InactivarComponent } from './Customers/Pages/Cuentas/inactivar/inactivar.component';
@@ -22,6 +22,7 @@ import { NuevaTransferenciaComponent } from './Customers/Pages/Transacciones/nue
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './Core/login/login.component';
+import { HttpConfigInterceptor } from './Shared/http-config-interceptor';
 
 @NgModule({
   declarations: [
@@ -42,8 +43,6 @@ import { LoginComponent } from './Core/login/login.component';
     NuevaConsignacionComponent,
     NuevaTransferenciaComponent,
     LoginComponent,
-    //HeaderComponent,
-    //NuevoComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +52,9 @@ import { LoginComponent } from './Core/login/login.component';
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

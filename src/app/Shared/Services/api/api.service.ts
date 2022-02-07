@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { listaCuentasI } from 'src/app/Shared/Models/listacuentas.interface';
 import { listaMovimientosI } from 'src/app/Shared/Models/listamovimientos.interface';
 import { TransaccionI } from 'src/app/Shared/Models/transaccion.interface';
+import { UserDto } from 'src/app/Security/models/user.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -119,6 +120,13 @@ export class ApiService {
     let monto: number = +form.monto;
     form.monto = monto;
     let response = this.http.post<ResponseI<TransaccionI>>(direccion,form)
+    return response
+  }
+
+  postLogin(form:UserDto):Observable<ResponseI<UserDto>>
+  {
+    let direccion = this.url + "users/auth"
+    let response = this.http.post<ResponseI<UserDto>>(direccion,form)
     return response
   }
 

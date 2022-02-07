@@ -21,6 +21,7 @@ import { NuevaConsignacionComponent } from './Customers/Pages/Transacciones/nuev
 import { NuevaTransferenciaComponent } from './Customers/Pages/Transacciones/nueva-transferencia/nueva-transferencia.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { LoginComponent } from './Core/login/login.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ToastrModule } from 'ngx-toastr';
     NuevoRetiroComponent,
     NuevaConsignacionComponent,
     NuevaTransferenciaComponent,
+    LoginComponent,
     //HeaderComponent,
     //NuevoComponent
   ],

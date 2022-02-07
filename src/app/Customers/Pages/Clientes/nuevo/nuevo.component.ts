@@ -25,7 +25,10 @@ export class NuevoComponent implements OnInit {
     estado: new FormControl('')
   });
 
-  constructor(private activeroute: ActivatedRoute, private router:Router, private api:ApiService, private alertas:AlertasService) { }
+  constructor(private activeroute: ActivatedRoute, 
+    private router:Router, 
+    private api:ApiService, 
+    private alertas:AlertasService) { }
 
   ngOnInit(): void {
   }

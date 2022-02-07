@@ -44,6 +44,10 @@ export class LoginComponent implements OnInit {
         this.globalService.user = data.data
         this.router.navigate(['home']);
       }
+      else
+      {
+        this.alertas.shiwWarning(data.message,'Login Fallido')
+      }
     })
   }
 

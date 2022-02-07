@@ -130,4 +130,11 @@ export class ApiService {
     return response
   }
 
+  postUser(user: UserDto):Observable<ResponseI<UserDto>>
+  {
+    let direccion = this.url + "users/add"
+    let response = this.http.post<ResponseI<UserDto>>(direccion,user)
+    return response
+  }
+
 }

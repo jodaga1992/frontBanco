@@ -15,6 +15,8 @@ import { NuevoRetiroComponent } from './Customers/Pages/Transacciones/nuevo-reti
 import { NuevaConsignacionComponent } from './Customers/Pages/Transacciones/nueva-consignacion/nueva-consignacion.component';
 import { NuevaTransferenciaComponent } from './Customers/Pages/Transacciones/nueva-transferencia/nueva-transferencia.component';
 import {LoginComponent} from './Core/login/login.component'
+import {NewUserComponent} from './Users/new-user/new-user.component'
+
 const routes: Routes = [
   {path:'', redirectTo:'home', pathMatch:'full'},
   {path:'home', component:HomeComponent},
@@ -31,7 +33,8 @@ const routes: Routes = [
   {path: 'NuevoRetiro/:numeroCuenta', component:NuevoRetiroComponent},
   {path: 'NuevaConsignacion/:numeroCuenta', component:NuevaConsignacionComponent},
   {path: 'NuevaTransferencia/:numeroCuenta', component:NuevaTransferenciaComponent},
-  {path: 'login', component:LoginComponent}
+  {path: 'login', component:LoginComponent},
+  {path: 'newUser', component: NewUserComponent}
 ];
 
 @NgModule({

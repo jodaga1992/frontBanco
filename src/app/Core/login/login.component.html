@@ -16,14 +16,14 @@
     <div class="form-group">
       <form [formGroup]="loginForm" (ngSubmit)="loginPost(loginForm.value)">
         <input type="text" class="form-control" formControlName="userName" placeholder="userName">
-        <input type="text" class="form-control" formControlName="password" placeholder="password">
+        <input type="password" class="form-control" formControlName="password" placeholder="password">
         <input type="submit" class="fadeIn fourth" value="Log In">
       </form>
   </div>
 
     <!-- Remind Passowrd -->
     <div id="formFooter">
-      <a class="underlineHover" href="#">Forgot Password?</a>
+      <a class="underlineHover" href="http://localhost:4200/newUser">Registrar usuario</a>
     </div>
 
   </div>

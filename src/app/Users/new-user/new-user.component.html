@@ -1,0 +1,32 @@
+<app-header></app-header>
+<div class="container">
+    <form [formGroup]="userForm" (ngSubmit)="validarDatos()">
+        <div class="form-group">
+            <div class="form-group row">
+                <div>
+                    <label for="exampleFormControlInput1">Nombre</label>
+                    <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre">
+                </div>
+                <div>
+                    <label for="exampleFormControlInput1">Apellido</label>
+                    <input type="text" class="form-control" placeholder="Apellido" formControlName="apellido">
+                </div>
+                <div>
+                    <label for="exampleFormControlInput1">Nombre de usuario</label>
+                    <input type="text" class="form-control" placeholder="Nombre de usuario" formControlName="userName">
+                </div>
+                <div>
+                    <label for="exampleFormControlInput1">Contraseña</label>
+                    <input type="password" class="form-control" placeholder="Contraseña" formControlName="password">
+                </div>
+                <div>
+                    <label for="exampleFormControlInput1">Confirmar Contraseña</label>
+                    <input type="password" class="form-control" placeholder="Confirmar Contraseña" formControlName="confimPassword">
+                </div>
+            </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-secondary btn-sm">Guardar</button>
+    </form>
+</div>
+<app-footer></app-footer>

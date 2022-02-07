@@ -23,6 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './Core/login/login.component';
 import { HttpConfigInterceptor } from './Shared/http-config-interceptor';
+import { NewUserComponent } from './Users/new-user/new-user.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { HttpConfigInterceptor } from './Shared/http-config-interceptor';
     NuevaConsignacionComponent,
     NuevaTransferenciaComponent,
     LoginComponent,
+    NewUserComponent,
   ],
   imports: [
     BrowserModule,

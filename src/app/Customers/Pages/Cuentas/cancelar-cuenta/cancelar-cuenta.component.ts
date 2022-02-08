@@ -4,6 +4,7 @@ import { listaCuentasI } from 'src/app/Shared/Models/listacuentas.interface';
 import {ResponseI} from '../../../../Shared/Models/response.interface';
 import {ApiService} from '../../../../Shared/Services/api/api.service';
 import {AlertasService} from '../../../../Shared/Services/alertas/alertas.service';
+import { GlobalService } from 'src/app/Shared/Services/global.service';
 
 @Component({
   selector: 'app-cancelar-cuenta',
@@ -13,9 +14,17 @@ import {AlertasService} from '../../../../Shared/Services/alertas/alertas.servic
 export class CancelarCuentaComponent implements OnInit {
 
   response:ResponseI<listaCuentasI> | undefined;
-  constructor(private activerouter:ActivatedRoute, private router:Router, private api:ApiService,private alertas:AlertasService) { }
+  constructor(private activerouter:ActivatedRoute, 
+    private router:Router, 
+    private api:ApiService,
+    private alertas:AlertasService,
+    private globalService: GlobalService) { }
 
   ngOnInit(): void {
+    if(this.globalService.user.jwt==null)
+    {
+      this.router.navigate(['login'])
+    }
     let numeroCuenta = this.activerouter.snapshot.paramMap.get('numeroCuenta');
     this.api.putCancelarCuenta(numeroCuenta).subscribe(data => {
       this.response = data

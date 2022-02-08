@@ -4,6 +4,7 @@ import { ListaClientesI } from 'src/app/Shared/Models/listaclientes.interface';
 import {ResponseI} from '../../../../Shared/Models/response.interface'
 import {ApiService} from '../../../../Shared/Services/api/api.service'
 import {AlertasService} from '../../../../Shared/Services/alertas/alertas.service';
+import { GlobalService } from 'src/app/Shared/Services/global.service';
 
 @Component({
   selector: 'app-activar-cliente',
@@ -13,9 +14,17 @@ import {AlertasService} from '../../../../Shared/Services/alertas/alertas.servic
 export class ActivarClienteComponent implements OnInit {
 
   response:ResponseI<ListaClientesI> | undefined;
-  constructor(private activerouter:ActivatedRoute, private router:Router, private api:ApiService, private alertas:AlertasService) { }
+  constructor(private activerouter:ActivatedRoute, 
+    private router:Router, 
+    private api:ApiService, 
+    private alertas:AlertasService,
+    private globalService: GlobalService) { }
 
   ngOnInit(): void {
+    if(this.globalService.user.jwt==null)
+    {
+      this.router.navigate(['login'])
+    }
     let numeroCuenta = this.activerouter.snapshot.paramMap.get('id');
     this.api.putActivarCliente(numeroCuenta).subscribe(data => {
       this.response = data

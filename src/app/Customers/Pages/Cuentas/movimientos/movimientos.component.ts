@@ -3,6 +3,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {ApiService} from '../../../../Shared/Services/api/api.service';
 import {ResponseI} from '../../../../Shared/Models/response.interface';
 import { listaMovimientosI } from 'src/app/Shared/Models/listamovimientos.interface';
+import { GlobalService } from 'src/app/Shared/Services/global.service';
 
 @Component({
   selector: 'app-movimientos',
@@ -13,9 +14,16 @@ export class MovimientosComponent implements OnInit {
 
   response:ResponseI<listaMovimientosI[]> | undefined;
   numeroc: any
-  constructor(private activerouter:ActivatedRoute, private router:Router, private api:ApiService) { }
+  constructor(private activerouter:ActivatedRoute, 
+    private router:Router, 
+    private api:ApiService,
+    private globalService: GlobalService) { }
 
   ngOnInit(): void {
+    if(this.globalService.user.jwt==null)
+    {
+      this.router.navigate(['login'])
+    }
     let numero = this.activerouter.snapshot.paramMap.get('numero');
     this.api.getMovimientos(numero).subscribe(data =>{
       this.response = data;

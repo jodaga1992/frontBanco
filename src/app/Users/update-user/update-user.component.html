@@ -1,0 +1,28 @@
+<app-header></app-header>
+<div class="container">
+    <form [formGroup]="userForm" (ngSubmit)="updateUser(userForm.value)">
+        <div class="form-group">
+            <div class="form-group row">
+                <div>
+                    <label for="exampleFormControlInput1">Nombre de usuario</label>
+                    <input type="text" class="form-control" placeholder="Nombre de usuario" formControlName="userName" readonly="true">
+                </div>
+                <div>
+                    <label for="exampleFormControlInput1">Nombre</label>
+                    <input type="text" class="form-control" placeholder="Nombre" formControlName="firstName">
+                </div>
+                <div>
+                    <label for="exampleFormControlInput1">Apellido</label>
+                    <input type="text" class="form-control" placeholder="Apellido" formControlName="lastName">
+                </div>
+                <div>
+                    <label for="exampleFormControlInput1">Contraseña</label>
+                    <input type="password" class="form-control" placeholder="Contraseña" formControlName="password">
+                </div>
+            </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-secondary btn-sm">Guardar</button>
+    </form>
+</div>
+<app-footer></app-footer>

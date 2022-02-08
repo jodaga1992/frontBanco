@@ -24,6 +24,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './Core/login/login.component';
 import { HttpConfigInterceptor } from './Shared/http-config-interceptor';
 import { NewUserComponent } from './Users/new-user/new-user.component';
+import { ChangePassComponent } from './Users/change-pass/change-pass.component';
+import { UpdateUserComponent } from './Users/update-user/update-user.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import { NewUserComponent } from './Users/new-user/new-user.component';
     NuevaTransferenciaComponent,
     LoginComponent,
     NewUserComponent,
+    ChangePassComponent,
+    UpdateUserComponent,
   ],
   imports: [
     BrowserModule,

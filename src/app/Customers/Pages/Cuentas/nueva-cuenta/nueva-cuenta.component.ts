@@ -5,6 +5,7 @@ import {FormGroup, FormControl, Validator, ReactiveFormsModule} from '@angular/f
 import { listaCuentasI } from 'src/app/Shared/Models/listacuentas.interface';
 import {AlertasService} from '../../../../Shared/Services/alertas/alertas.service';
 import { ResponseI } from 'src/app/Shared/Models/response.interface';
+import { GlobalService } from 'src/app/Shared/Services/global.service';
 
 @Component({
   selector: 'app-nueva-cuenta',
@@ -18,9 +19,17 @@ export class NuevaCuentaComponent implements OnInit {
   editorform = new FormGroup({
     tipo: new FormControl('')
   });
-  constructor(private activeroute: ActivatedRoute, private router:Router, private api:ApiService,private alertas:AlertasService) { }
+  constructor(private activeroute: ActivatedRoute, 
+    private router:Router, 
+    private api:ApiService,
+    private alertas:AlertasService,
+    private globalService: GlobalService) { }
 
   ngOnInit(): void {
+    if(this.globalService.user.jwt==null)
+    {
+      this.router.navigate(['login'])
+    }
     this.clienteid = this.activeroute.snapshot.paramMap.get('id');
     this.editorform.setValue({
       'tipo':"Ahorros"

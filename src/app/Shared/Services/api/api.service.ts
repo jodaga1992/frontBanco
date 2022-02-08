@@ -137,4 +137,18 @@ export class ApiService {
     return response
   }
 
+  patchChagePass(user: UserDto):Observable<ResponseI<UserDto>>
+  {
+    let direccion = this.url + "users/chagePass"
+    let response = this.http.patch<ResponseI<UserDto>>(direccion,user)
+    return response
+  }
+
+  putUser(user: UserDto):Observable<ResponseI<UserDto>>
+  {
+    let direccion = this.url + "users/update"
+    let response = this.http.put<ResponseI<UserDto>>(direccion,user)
+    return response
+  }
+
 }

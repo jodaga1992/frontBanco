@@ -5,6 +5,7 @@ import {FormGroup, FormControl, Validator, ReactiveFormsModule} from '@angular/f
 import {TransaccionI} from '../../../../Shared/Models/transaccion.interface'
 import {AlertasService} from '../../../../Shared/Services/alertas/alertas.service';
 import { ResponseI } from 'src/app/Shared/Models/response.interface';
+import { GlobalService } from 'src/app/Shared/Services/global.service';
 
 @Component({
   selector: 'app-nueva-consignacion',
@@ -17,9 +18,17 @@ export class NuevaConsignacionComponent implements OnInit {
   editorform = new FormGroup({
     monto: new FormControl('')
   });
-  constructor(private activeroute: ActivatedRoute, private router:Router, private api:ApiService, private alertas:AlertasService) { }
+  constructor(private activeroute: ActivatedRoute, 
+    private router:Router, 
+    private api:ApiService, 
+    private alertas:AlertasService,
+    private globalService: GlobalService) { }
 
   ngOnInit(): void {
+    if(this.globalService.user.jwt==null)
+    {
+      this.router.navigate(['login'])
+    }
   }
   postForm(form:TransaccionI)
   {

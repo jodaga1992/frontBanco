@@ -5,6 +5,7 @@ import {ResponseI} from '../../../../Shared/Models/response.interface';
 import {ListaClientesI} from '../../../../Shared/Models/listaclientes.interface';
 import {FormGroup, FormControl, Validator, ReactiveFormsModule} from '@angular/forms';
 import {AlertasService} from '../../../../Shared/Services/alertas/alertas.service';
+import { GlobalService } from 'src/app/Shared/Services/global.service';
 
 @Component({
   selector: 'app-editar',
@@ -27,9 +28,17 @@ export class EditarComponent implements OnInit {
   });
 
 
-  constructor(private activeroute: ActivatedRoute, private router:Router, private api:ApiService,private alertas:AlertasService) { }
+  constructor(private activeroute: ActivatedRoute, 
+    private router:Router, 
+    private api:ApiService,
+    private alertas:AlertasService,
+    private globalService: GlobalService) { }
 
   ngOnInit(): void {
+    if(this.globalService.user.jwt==null)
+    {
+      this.router.navigate(['login'])
+    }
     let clienteId = this.activeroute.snapshot.paramMap.get('id');
     this.api.getClienteId(clienteId).subscribe(data =>{
       this.response = data;
